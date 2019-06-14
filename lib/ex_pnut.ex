@@ -12,7 +12,6 @@ defmodule ExPnut do
       :world
 
   """
-  def hello do
-    :world
-  end
+
+  defdelegate get_app_access_token, to: ExPnut.Auth
 end
