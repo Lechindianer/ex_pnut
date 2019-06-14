@@ -1,4 +1,4 @@
-defmodule ExPnut.Streams do
+defmodule ExPnut.Posts.Streams do
   @moduledoc false
 
   def me(access_token) do
