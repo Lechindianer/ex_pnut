@@ -5,9 +5,10 @@ defmodule ExPnut.Decode do
     decoded_body = response.body
                    |> Jason.decode!([{ :keys, :atoms }])
 
-    200 = decoded_body.meta.code
-
-    decoded_body
+    cond do
+      decoded_body.meta.code === 200 -> decoded_body
+      decoded_body.meta.code === 201 -> decoded_body
+    end
   end
 
   def decode_app_access_token(response) do
