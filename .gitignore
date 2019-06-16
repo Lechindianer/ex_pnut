@@ -24,3 +24,4 @@ ex_pnut-*.tar
 
 ex_pnut.iml
 .idea/
+config/dev.exs
