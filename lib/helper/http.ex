@@ -1,27 +1,25 @@
 defmodule ExPnut.Helper.HTTP do
   @moduledoc false
 
-  def get(access_token, url) do
-    headers = default_headers(access_token)
-    endpoint = Application.get_env(:ex_pnut, :endpoint)
+  def get(client, url) do
+    headers = default_headers(client)
 
-    HTTPoison.get!("#{endpoint}#{url}", headers)
+    HTTPoison.get!("#{client.endpoint}#{url}", headers)
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
 
-  def post(access_token, url, payload) do
-    headers = default_headers(access_token)
-    endpoint = Application.get_env(:ex_pnut, :endpoint)
+  def post(client, url, payload) do
+    headers = default_headers(client)
 
-    HTTPoison.post!("#{endpoint}#{url}", payload, headers)
+    HTTPoison.post!("#{client.endpoint}#{url}", payload, headers)
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
 
-  defp default_headers(access_token) do
+  defp default_headers(client) do
     [
-      {"Authorization", "Bearer #{access_token}"},
+      {"Authorization", "Bearer #{client.auth}"},
       {"Content-Type", "application/json"},
       {"X-Pretty-Json", "1"},
     ]

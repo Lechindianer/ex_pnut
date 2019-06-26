@@ -3,27 +3,27 @@ defmodule ExPnut.Posts.Streams do
 
   @moduledoc false
 
-  def me(access_token) do
-    get(access_token, "/posts/streams/me")
+  def me(client) do
+    get(client, "/posts/streams/me")
   end
 
-  def unified(access_token) do
-    get(access_token, "/posts/streams/unified")
+  def unified(client) do
+    get(client, "/posts/streams/unified")
   end
 
-  def mentions(access_token, user_id) do
-    get(access_token, "/users/#{user_id}/mentions")
+  def mentions(client, user_id) do
+    get(client, "/users/#{user_id}/mentions")
   end
 
-  def posts(access_token, user_id) do
-    get(access_token, "/users/#{user_id}/posts")
+  def posts(client, user_id) do
+    get(client, "/users/#{user_id}/posts")
   end
 
-  def global(access_token) do
-    get(access_token, "#/posts/streams/global")
+  def global(client) do
+    get(client, "/posts/streams/global")
   end
 
-  def tag(access_token, tag) do
-    get(access_token, "/posts/tag/#{tag}")
+  def tag(client, tag) do
+    get(client, "/posts/tag/#{tag}")
   end
 end
