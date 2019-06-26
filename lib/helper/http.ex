@@ -1,15 +1,22 @@
 defmodule ExPnut.Helper.HTTP do
+  alias ExPnut.Posts.PostParams
+
   @moduledoc false
 
-  def get(client, url) do
+  def get(client, url, params = %PostParams{}) do
     headers = default_headers(client)
 
-    HTTPoison.get!("#{client.endpoint}#{url}", headers)
+    test = params
+          |> Map.from_struct
+          |> Map.to_list
+
+    HTTPoison.get!("#{client.endpoint}#{url}", headers, [params: test])
+    |> IO.inspect
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
 
-  def post(client, url, payload) do
+  def post(client, url, payload, _ = %PostParams{}) do
     headers = default_headers(client)
 
     HTTPoison.post!("#{client.endpoint}#{url}", payload, headers)
