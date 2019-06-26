@@ -1,5 +1,5 @@
 defmodule ExPnut.Client do
-  defstruct auth: nil, endpoint: "https://api.pnut.io/v0/"
+  defstruct auth: nil, endpoint: "https://api.pnut.io/v0"
 
   @type auth :: %{user: binary, password: binary} | %{access_token: binary}
   @type t :: %__MODULE__{auth: auth | nil, endpoint: binary}
