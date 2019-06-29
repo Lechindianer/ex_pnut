@@ -1,4 +1,6 @@
 defmodule ExPnut.Client do
+  @moduledoc false
+
   defstruct auth: nil, endpoint: "https://api.pnut.io/v0"
 
   @type auth :: %{user: binary, password: binary} | %{access_token: binary}

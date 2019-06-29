@@ -3,11 +3,12 @@ defmodule ExPnut.Decode do
 
   def decode(response) do
     decoded_body = response.body
-                   |> Jason.decode!([{ :keys, :atoms }])
+                   |> Jason.decode!([{:keys, :atoms}])
 
     cond do
       decoded_body.meta.code === 200 -> decoded_body
       decoded_body.meta.code === 201 -> decoded_body
+      true -> {:error, "HTTP call failed"}
     end
   end
 
@@ -15,6 +16,6 @@ defmodule ExPnut.Decode do
     200 = response.status_code
 
     response.body
-    |> Jason.decode!([{ :keys, :atoms }])
+    |> Jason.decode!([{:keys, :atoms}])
   end
 end

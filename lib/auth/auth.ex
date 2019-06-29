@@ -9,7 +9,8 @@ defmodule ExPnut.Auth do
     ]
     endpoint = Application.get_env(:ex_pnut, :endpoint)
 
-    HTTPoison.post!("#{endpoint}/oauth/access_token", { :form, data })
+    "#{endpoint}/oauth/access_token"
+    |> HTTPoison.post!({:form, data})
     |> ExPnut.Decode.decode_app_access_token
     |> Map.get(:access_token)
   end

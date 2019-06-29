@@ -10,7 +10,8 @@ defmodule ExPnut.Helper.HTTP do
           |> Map.from_struct
           |> Map.to_list
 
-    HTTPoison.get!("#{client.endpoint}#{url}", headers, [params: test])
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.get!(headers, [params: test])
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
@@ -18,7 +19,8 @@ defmodule ExPnut.Helper.HTTP do
   def post(client, url, payload) do
     headers = default_headers(client)
 
-    HTTPoison.post!("#{client.endpoint}#{url}", payload, headers)
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.post!(payload, headers)
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
@@ -26,7 +28,8 @@ defmodule ExPnut.Helper.HTTP do
   def put(client, url, payload) do
     headers = default_headers(client)
 
-    HTTPoison.put!("#{client.endpoint}#{url}", payload, headers)
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.put!(payload, headers)
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
@@ -34,7 +37,8 @@ defmodule ExPnut.Helper.HTTP do
   def delete(client, url) do
     headers = default_headers(client)
 
-    HTTPoison.delete!("#{client.endpoint}#{url}", headers)
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.delete!(headers)
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
