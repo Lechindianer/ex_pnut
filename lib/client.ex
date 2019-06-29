@@ -19,5 +19,6 @@ defmodule ExPnut.Client do
   def new(auth = %{access_token: _}), do: %__MODULE__{auth: auth}
 
   @spec new(binary, binary) :: t
-  def new(access_token, endpoint) when is_binary(access_token) and is_binary(endpoint), do: %__MODULE__{auth: access_token, endpoint: endpoint}
+  def new(access_token, endpoint) when is_binary(access_token) and is_binary(endpoint),
+    do: %__MODULE__{auth: access_token, endpoint: endpoint}
 end

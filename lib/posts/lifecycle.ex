@@ -6,16 +6,25 @@ defmodule ExPnut.Posts.Lifecycle do
   @moduledoc false
 
   def posts(client, new_post = %NewPost{}, post_params = %PostParams{} \\ %PostParams{}) do
-    post_jsonified = new_post
-                    |> Jason.encode
-                    |> elem(1)
+    post_jsonified =
+      new_post
+      |> Jason.encode()
+      |> elem(1)
+
     post(client, "/posts", post_jsonified, post_params)
   end
 
-  def revise_post(client, postId, new_post = %NewPost{}, post_params = %PostParams{} \\ %PostParams{}) do
-    post_jsonified = new_post
-                     |> Jason.encode
-                     |> elem(1)
+  def revise_post(
+        client,
+        postId,
+        new_post = %NewPost{},
+        post_params = %PostParams{} \\ %PostParams{}
+      ) do
+    post_jsonified =
+      new_post
+      |> Jason.encode()
+      |> elem(1)
+
     put(client, "/posts/#{postId}", post_jsonified, post_params)
   end
 

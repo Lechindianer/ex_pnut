@@ -2,8 +2,9 @@ defmodule ExPnut.Decode do
   @moduledoc false
 
   def decode(response) do
-    decoded_body = response.body
-                   |> Jason.decode!([{:keys, :atoms}])
+    decoded_body =
+      response.body
+      |> Jason.decode!([{:keys, :atoms}])
 
     cond do
       decoded_body.meta.code === 200 -> decoded_body

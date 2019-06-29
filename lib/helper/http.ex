@@ -6,13 +6,14 @@ defmodule ExPnut.Helper.HTTP do
   def get(client, url, params = %PostParams{}) do
     headers = default_headers(client)
 
-    test = params
-          |> Map.from_struct
-          |> Map.to_list
+    test =
+      params
+      |> Map.from_struct()
+      |> Map.to_list()
 
     "#{client.endpoint}#{url}"
-    |> HTTPoison.get!(headers, [params: test])
-    |> ExPnut.Decode.decode
+    |> HTTPoison.get!(headers, params: test)
+    |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
 
@@ -21,7 +22,7 @@ defmodule ExPnut.Helper.HTTP do
 
     "#{client.endpoint}#{url}"
     |> HTTPoison.post!(payload, headers)
-    |> ExPnut.Decode.decode
+    |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
 
@@ -30,7 +31,7 @@ defmodule ExPnut.Helper.HTTP do
 
     "#{client.endpoint}#{url}"
     |> HTTPoison.put!(payload, headers)
-    |> ExPnut.Decode.decode
+    |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
 
@@ -39,7 +40,7 @@ defmodule ExPnut.Helper.HTTP do
 
     "#{client.endpoint}#{url}"
     |> HTTPoison.delete!(headers)
-    |> ExPnut.Decode.decode
+    |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
 
@@ -47,7 +48,7 @@ defmodule ExPnut.Helper.HTTP do
     [
       {"Authorization", "Bearer #{client.auth}"},
       {"Content-Type", "application/json"},
-      {"X-Pretty-Json", "1"},
+      {"X-Pretty-Json", "1"}
     ]
   end
 end

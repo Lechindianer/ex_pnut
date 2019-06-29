@@ -7,11 +7,12 @@ defmodule ExPnut.Auth do
       client_secret: System.get_env("CLIENT_SECRET"),
       grant_type: "client_credentials"
     ]
+
     endpoint = Application.get_env(:ex_pnut, :endpoint)
 
     "#{endpoint}/oauth/access_token"
     |> HTTPoison.post!({:form, data})
-    |> ExPnut.Decode.decode_app_access_token
+    |> ExPnut.Decode.decode_app_access_token()
     |> Map.get(:access_token)
   end
 end
