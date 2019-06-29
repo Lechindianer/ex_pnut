@@ -24,6 +24,22 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
+  def put(client, url, payload) do
+    headers = default_headers(client)
+
+    HTTPoison.put!("#{client.endpoint}#{url}", payload, headers)
+    |> ExPnut.Decode.decode
+    |> Map.get(:data)
+  end
+
+  def delete(client, url) do
+    headers = default_headers(client)
+
+    HTTPoison.delete!("#{client.endpoint}#{url}", headers)
+    |> ExPnut.Decode.decode
+    |> Map.get(:data)
+  end
+
   defp default_headers(client) do
     [
       {"Authorization", "Bearer #{client.auth}"},
