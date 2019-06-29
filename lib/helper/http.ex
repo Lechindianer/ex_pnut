@@ -16,7 +16,7 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
-  def post(client, url, payload, _ = %PostParams{}) do
+  def post(client, url, payload) do
     headers = default_headers(client)
 
     HTTPoison.post!("#{client.endpoint}#{url}", payload, headers)
