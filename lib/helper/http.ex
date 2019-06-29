@@ -11,7 +11,6 @@ defmodule ExPnut.Helper.HTTP do
           |> Map.to_list
 
     HTTPoison.get!("#{client.endpoint}#{url}", headers, [params: test])
-    |> IO.inspect
     |> ExPnut.Decode.decode
     |> Map.get(:data)
   end
