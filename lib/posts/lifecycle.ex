@@ -1,4 +1,4 @@
-defmodule ExPnut.Posts.Posts do
+defmodule ExPnut.Posts.Lifecycle do
   import ExPnut.Helper.HTTP
   alias ExPnut.Posts.NewPost
   alias ExPnut.Posts.PostParams
