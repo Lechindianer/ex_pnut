@@ -3,34 +3,32 @@ defmodule ExPnut.Helper.HTTP do
 
   @moduledoc false
 
-  def get(client, url, params = %PostParams{}) do
+  def get(client, url, post_params = %PostParams{}) do
     headers = default_headers(client)
-
-    test =
-      params
-      |> Map.from_struct()
-      |> Map.to_list()
+    params = build_url_params(post_params)
 
     "#{client.endpoint}#{url}"
-    |> HTTPoison.get!(headers, params: test)
+    |> HTTPoison.get!(headers, params: params)
     |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
 
-  def post(client, url, payload) do
+  def post(client, url, payload, post_params = %PostParams{}) do
     headers = default_headers(client)
+    params = build_url_params(post_params)
 
     "#{client.endpoint}#{url}"
-    |> HTTPoison.post!(payload, headers)
+    |> HTTPoison.post!(payload, headers, params: params)
     |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
 
-  def put(client, url, payload) do
+  def put(client, url, payload, post_params = %PostParams{}) do
     headers = default_headers(client)
+    params = build_url_params(post_params)
 
     "#{client.endpoint}#{url}"
-    |> HTTPoison.put!(payload, headers)
+    |> HTTPoison.put!(payload, headers, params: params)
     |> ExPnut.Decode.decode()
     |> Map.get(:data)
   end
@@ -42,6 +40,12 @@ defmodule ExPnut.Helper.HTTP do
     |> HTTPoison.delete!(headers)
     |> ExPnut.Decode.decode()
     |> Map.get(:data)
+  end
+
+  defp build_url_params(params) do
+    params
+    |> Map.from_struct()
+    |> Map.to_list()
   end
 
   defp default_headers(client) do
