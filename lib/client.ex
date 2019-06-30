@@ -1,5 +1,7 @@
 defmodule ExPnut.Client do
-  @moduledoc false
+  @moduledoc """
+  Create a new ExPnut client. This is necessary to use the rest of ExPnut library.
+  """
 
   defstruct auth: nil, endpoint: "https://api.pnut.io/v0"
 

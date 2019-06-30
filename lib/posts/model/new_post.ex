@@ -1,5 +1,9 @@
 defmodule ExPnut.Posts.NewPost do
-  @moduledoc false
+  @moduledoc """
+  Contains all valid post options.
+
+  [https://pnut.io/docs/api/resources/posts/lifecycle](https://pnut.io/docs/api/resources/posts/lifecycle)
+  """
 
   @derive {Jason.Encoder,
            only: [
