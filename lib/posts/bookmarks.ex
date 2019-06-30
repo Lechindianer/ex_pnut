@@ -13,21 +13,21 @@ defmodule ExPnut.Posts.Bookmarks do
 
   Returned posts may include a note string field if looking up bookmarks made by the authorized user.
   """
-  def get_post(client, user_id, post_params = %PostParams{} \\ %PostParams{}) do
+  def get_post(client, user_id, %PostParams{} = post_params \\ %PostParams{}) do
     get(client, "/users/#{user_id}/bookmarks", post_params)
   end
 
   @doc """
   Bookmark a post.
   """
-  def bookmark(client, post_id, post_params = %PostParams{} \\ %PostParams{}) do
+  def bookmark(client, post_id, %PostParams{} = post_params \\ %PostParams{}) do
     put(client, "/posts/#{post_id}/bookmark", [], post_params)
   end
 
   @doc """
   Bookmark a post.
   """
-  def bookmark_with_note(client, post_id, note, post_params = %PostParams{} \\ %PostParams{}) do
+  def bookmark_with_note(client, post_id, note, %PostParams{} = post_params \\ %PostParams{}) do
     case String.length(note) > 128 do
       true -> {:error, :note_text_too_long}
       false -> put(client, "/posts/#{post_id}/bookmark", note, post_params)

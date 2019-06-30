@@ -9,7 +9,7 @@ defmodule ExPnut.Posts.Explore do
   @doc """
   Retrieve a list of explore streams.
   """
-  def explore(client, post_params = %PostParams{} \\ %PostParams{}) do
+  def explore(client, %PostParams{} = post_params \\ %PostParams{}) do
     get(client, "/posts/streams/explore", post_params)
   end
 
@@ -18,7 +18,7 @@ defmodule ExPnut.Posts.Explore do
 
   Slug can be of the following values: "conversations", "photos", "trending" and "missed_conversations"
   """
-  def explore_slug(client, slug, post_params = %PostParams{} \\ %PostParams{}) do
+  def explore_slug(client, slug, %PostParams{} = post_params \\ %PostParams{}) do
     get(client, "/posts/streams/explore/#{slug}", post_params)
   end
 end

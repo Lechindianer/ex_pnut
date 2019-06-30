@@ -3,7 +3,7 @@ defmodule ExPnut.Helper.HTTP do
 
   @moduledoc false
 
-  def get(client, url, post_params = %PostParams{}) do
+  def get(client, url, %PostParams{} = post_params) do
     headers = default_headers(client)
     params = build_url_params(post_params)
 
@@ -13,7 +13,7 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
-  def post(client, url, payload, post_params = %PostParams{}) do
+  def post(client, url, payload, %PostParams{} = post_params) do
     headers = default_headers(client)
     params = build_url_params(post_params)
 
@@ -23,7 +23,7 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
-  def put(client, url, payload, post_params = %PostParams{}) do
+  def put(client, url, payload, %PostParams{} = post_params) do
     headers = default_headers(client)
     params = build_url_params(post_params)
 

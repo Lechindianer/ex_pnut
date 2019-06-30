@@ -11,7 +11,7 @@ defmodule ExPnut.Posts.Threads do
   @doc """
   Retrieve posts within a thread. Threads are separated by what root post all posts below it have replied to.
   """
-  def get_thread(client, post_id, post_params = %PostParams{} \\ %PostParams{}) do
+  def get_thread(client, post_id, %PostParams{} = post_params \\ %PostParams{}) do
     get(client, "/posts/#{post_id}/thread", post_params)
   end
 end
