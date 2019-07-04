@@ -1,12 +1,13 @@
 defmodule ExPnut.Helper.HTTP do
-  alias ExPnut.Posts.PostParams
   import ExPnut.Helper.UrlParams
 
-  @moduledoc false
+  @moduledoc """
+  Helper including basic HTTP methods
+  """
 
-  def get(client, url, %PostParams{} = post_params) do
+  def get(client, url, params) do
     headers = default_headers(client)
-    params = build(post_params)
+    params = build(params)
 
     "#{client.endpoint}#{url}"
     |> HTTPoison.get!(headers, params: params)
@@ -14,9 +15,9 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
-  def post(client, url, payload, %PostParams{} = post_params) do
+  def post(client, url, payload, params) do
     headers = default_headers(client)
-    params = build(post_params)
+    params = build(params)
 
     "#{client.endpoint}#{url}"
     |> HTTPoison.post!(payload, headers, params: params)
@@ -24,9 +25,9 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
-  def put(client, url, payload, %PostParams{} = post_params) do
+  def put(client, url, payload, params) do
     headers = default_headers(client)
-    params = build(post_params)
+    params = build(params)
 
     "#{client.endpoint}#{url}"
     |> HTTPoison.put!(payload, headers, params: params)
