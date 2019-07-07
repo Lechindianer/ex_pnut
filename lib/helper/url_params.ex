@@ -1,7 +1,5 @@
 defmodule ExPnut.Helper.UrlParams do
-  @moduledoc """
-  Build url parameters from structs
-  """
+  @moduledoc false
 
   @doc """
   Build url parameters from structs

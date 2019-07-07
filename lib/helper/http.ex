@@ -1,9 +1,7 @@
 defmodule ExPnut.Helper.HTTP do
   import ExPnut.Helper.UrlParams
 
-  @moduledoc """
-  Helper including basic HTTP methods
-  """
+  @moduledoc false
 
   def get(client, url, params) do
     headers = default_headers(client)
