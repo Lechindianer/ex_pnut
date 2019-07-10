@@ -12,12 +12,7 @@ defmodule ExPnut.Posts.Reposts do
   Repost another post. The repost will show up in followers' streams if they have not seen another repost of the same within the last week, and if the reposted post is not in their recent stream. It is created in its own thread, not the thread of the original post. This increments a user's post count.
   """
   def repost(client, post_id, %PostParams{} = post_params \\ %PostParams{}) do
-    post_id_jsonified =
-      post_id
-      |> Jason.encode()
-      |> elem(1)
-
-    put(client, "/posts/#{post_id}/repost", post_id_jsonified, post_params)
+    put(client, "/posts/#{post_id}/repost", post_id, post_params)
   end
 
   @doc """

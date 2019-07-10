@@ -49,7 +49,7 @@ defmodule ExPnut.Posts.Lifecycle do
       |> Jason.encode()
       |> elem(1)
 
-    put(client, "/posts/#{postId}", post_jsonified, post_params)
+    put_json(client, "/posts/#{postId}", post_jsonified, post_params)
   end
 
   @doc """

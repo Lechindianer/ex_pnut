@@ -21,16 +21,21 @@ defmodule ExPnut.Posts.Bookmarks do
   Bookmark a post.
   """
   def bookmark(client, post_id, %PostParams{} = post_params \\ %PostParams{}) do
-    put(client, "/posts/#{post_id}/bookmark", [], post_params)
+    put_json(client, "/posts/#{post_id}/bookmark", [], post_params)
   end
 
   @doc """
   Bookmark a post.
   """
   def bookmark_with_note(client, post_id, note, %PostParams{} = post_params \\ %PostParams{}) do
+    note_jsonified =
+      note
+      |> Jason.encode()
+      |> elem(1)
+
     case String.length(note) > 128 do
       true -> {:error, :note_text_too_long}
-      false -> put(client, "/posts/#{post_id}/bookmark", note, post_params)
+      false -> put_json(client, "/posts/#{post_id}/bookmark", note_jsonified, post_params)
     end
   end
 

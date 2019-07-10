@@ -24,6 +24,20 @@ defmodule ExPnut.Helper.HTTP do
   end
 
   def put(client, url, payload, params) do
+    headers =
+      client
+      |> default_headers()
+      |> Enum.filter(fn {k, _} -> k !== "Content-Type" end)
+
+    params = build(params)
+
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.put!(payload, headers, params: params)
+    |> ExPnut.Decode.decode()
+    |> Map.get(:data)
+  end
+
+  def put_json(client, url, payload, params) do
     headers = default_headers(client)
     params = build(params)
 
