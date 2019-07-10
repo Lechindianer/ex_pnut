@@ -19,10 +19,7 @@ defmodule ExPnut.Posts.Lifecycle do
   An application/json Content-Type is preferred over form. Normal links and markdown links are parsed by the server by default.
   """
   def posts(client, %NewPost{} = new_post, %PostParams{} = post_params \\ %PostParams{}) do
-    post_jsonified =
-      new_post
-      |> Jason.encode()
-      |> elem(1)
+    post_jsonified = ExPnut.Helper.JSON.jsonify(new_post)
 
     post(client, "/posts", post_jsonified, post_params)
   end
@@ -44,10 +41,7 @@ defmodule ExPnut.Posts.Lifecycle do
         %NewPost{} = new_post,
         %PostParams{} = post_params \\ %PostParams{}
       ) do
-    post_jsonified =
-      new_post
-      |> Jason.encode()
-      |> elem(1)
+    post_jsonified = ExPnut.Helper.JSON.jsonify(new_post)
 
     put_json(client, "/posts/#{postId}", post_jsonified, post_params)
   end

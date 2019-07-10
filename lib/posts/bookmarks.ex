@@ -28,10 +28,7 @@ defmodule ExPnut.Posts.Bookmarks do
   Bookmark a post.
   """
   def bookmark_with_note(client, post_id, note, %PostParams{} = post_params \\ %PostParams{}) do
-    note_jsonified =
-      note
-      |> Jason.encode()
-      |> elem(1)
+    note_jsonified = ExPnut.Helper.JSON.jsonify(note)
 
     case String.length(note) > 128 do
       true -> {:error, :note_text_too_long}
