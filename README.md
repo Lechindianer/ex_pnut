@@ -1,6 +1,6 @@
 # ExPnut
 
-**TODO: Add description**
+ExPnut is an Elixir wrapper for the pnut API.
 
 ## Installation
 
