@@ -28,4 +28,16 @@ defmodule ExPnut.MixProject do
       {:jason, "~> 1.1"}
     ]
   end
+
+  defp description() do
+    "ExPnut is an Elixir wrapper for the pnut API."
+  end
+
+  defp package() do
+    [
+      name: "ExPnut",
+      licenses: ["ISC"],
+      links: %{"GitHub" => "https://github.com/Lechindianer/ex_pnut"}
+    ]
+  end
 end
