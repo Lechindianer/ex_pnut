@@ -23,6 +23,16 @@ defmodule ExPnut.Helper.HTTP do
     |> Map.get(:data)
   end
 
+  def patch(client, url, payload, params) do
+    headers = default_headers(client)
+    params = build(params)
+
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.patch!(payload, headers, params: params)
+    |> ExPnut.Decode.decode()
+    |> Map.get(:data)
+  end
+
   def put(client, url, payload, params) do
     headers =
       client
