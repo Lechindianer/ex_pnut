@@ -10,7 +10,7 @@ defmodule ExPnut.MixProject do
       description: description(),
       package: package(),
       deps: deps(),
-      name: "ExPnut",
+      name: "Ex.Pnut",
       source_url: "https://github.com/Lechindianer/ex_pnut"
     ]
   end
@@ -39,7 +39,6 @@ defmodule ExPnut.MixProject do
 
   defp package() do
     [
-      name: "ExPnut",
       licenses: ["ISC"],
       links: %{"GitHub" => "https://github.com/Lechindianer/ex_pnut"}
     ]
