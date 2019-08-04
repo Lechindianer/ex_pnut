@@ -38,10 +38,12 @@ defmodule ExPnut.User.Interactions do
 
   **Query parameters**
 
-  | Name    | Description                                                                                                                                                |
-  |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | filters | Comma-separated list of actions to filter by. `?filters=bookmark` will only include bookmarks.  Allowed: `bookmark, repost, reply, follow, poll_response`. |
-  | exclude | Comma-separated list of actions to exclude. `?exclude=bookmark` will return all actions except bookmarks. If `filters` is also specified, this is ignored. |
+  ## Parameters
+
+  - filters: Comma-separated list of actions to filter by. `?filters=bookmark` will only include bookmarks.  Allowed:
+  `bookmark, repost, reply, follow, poll_response`.
+  - exclude: Comma-separated list of actions to exclude. `?exclude=bookmark` will return all actions except bookmarks.
+  If `filters` is also specified, this is ignored.
   """
   def get_queried_interactions(
         client,

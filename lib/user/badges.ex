@@ -5,7 +5,8 @@ defmodule ExPnut.User.Badges do
   @moduledoc """
   Badges are accessible to users who are current badge holders.
 
-  A user can set what badge to display on their profile from their account, or a client can update it by updating the user.
+  A user can set what badge to display on their profile from their account, or a client can update it by updating the
+  user.
 
   Endpoints:
   - Get a badge

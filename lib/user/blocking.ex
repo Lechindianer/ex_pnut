@@ -3,7 +3,8 @@ defmodule ExPnut.User.Blocking do
   alias ExPnut.User.UserParams
 
   @moduledoc """
-  Blocking a user prevents the blocked user and the blocking user from seeing each other on the network except in a few necessary places.
+  Blocking a user prevents the blocked user and the blocking user from seeing each other on the network except in a
+  few necessary places.
 
   Endpoints:
   - Get blocked users

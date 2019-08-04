@@ -12,11 +12,13 @@ defmodule ExPnut.Posts.Lifecycle do
   @doc """
   Create a post.
 
-  On creation, you can automatically update the "personal" stream marker to the post's ID by including update_marker=1 in the query string.
+  On creation, you can automatically update the "personal" stream marker to the post's ID by including update_marker=1
+  in the query string.
 
   Posts from the same human- or feed-type user cannot contain the same text within 120 seconds.
 
-  An application/json Content-Type is preferred over form. Normal links and markdown links are parsed by the server by default.
+  An application/json Content-Type is preferred over form. Normal links and markdown links are parsed by the server
+  by default.
   """
   def posts(client, %NewPost{} = new_post, %PostParams{} = post_params \\ %PostParams{}) do
     post_jsonified = ExPnut.Helper.JSON.jsonify(new_post)
@@ -29,7 +31,8 @@ defmodule ExPnut.Posts.Lifecycle do
 
   - Can only be done within 300 seconds of the original post's creation
   - Can only be done once to a post
-  - Must contain the same entities that were in the original post (Positions can change. Links can be formatted in any way, but the URLs have to be the same)
+  - Must contain the same entities that were in the original post (Positions can change. Links can be formatted in any
+  way, but the URLs have to be the same)
 
   Once a revision has been made, the original post can still be retrieved from the Revisions endpoint.
 

@@ -23,9 +23,11 @@ defmodule ExPnut.Posts.Lookup do
   end
 
   @doc """
-  Retrieve a list of previous versions of a post, not including the most recent. Currently a post can only have one previous version.
+  Retrieve a list of previous versions of a post, not including the most recent. Currently a post can only have one
+  previous version.
 
-  Revisions returned will have revision as a String number indicating which version of the post it is. Revisions start at "0".
+  Revisions returned will have revision as a String number indicating which version of the post it is. Revisions start
+  at "0".
   """
   def get_revisions(client, post_id, %PostParams{} = post_params \\ %PostParams{}) do
     get(client, "/posts/#{post_id}/revisions", post_params)

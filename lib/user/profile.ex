@@ -36,7 +36,8 @@ defmodule ExPnut.User.Profile do
   @doc """
   Updates only specified parts of the authenticated user's profile.
 
-  Requires a user object with "application/json" content type. "name", "text", "timezone", and "locale" are current options.
+  Requires a user object with "application/json" content type. "name", "text", "timezone", and "locale" are current
+  options.
 
   "text" must be a child key of "content".
 
