@@ -21,7 +21,7 @@ defmodule ExPnut.Clients do
   - user_id: ID of the user to list clients from.
   """
   def get_client(client, user_id) do
-    get(client, "/users/#{user_id}/clients", nil)
+    get(client, "/users/#{user_id}/clients")
   end
 
   @doc """
@@ -34,6 +34,6 @@ defmodule ExPnut.Clients do
   - client_id: ID of the client to retrieve.
   """
   def get_client_details(client, client_id) do
-    get(client, "/clients/#{client_id}", nil)
+    get(client, "/clients/#{client_id}")
   end
 end

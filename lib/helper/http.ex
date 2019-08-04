@@ -3,6 +3,15 @@ defmodule ExPnut.Helper.HTTP do
 
   @moduledoc false
 
+  def get(client, url) do
+    headers = default_headers(client)
+
+    "#{client.endpoint}#{url}"
+    |> HTTPoison.get!(headers)
+    |> ExPnut.Decode.decode()
+    |> Map.get(:data)
+  end
+
   def get(client, url, params) do
     headers = default_headers(client)
     params = build(params)

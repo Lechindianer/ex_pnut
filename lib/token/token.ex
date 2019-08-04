@@ -19,7 +19,7 @@ defmodule ExPnut.Token do
   Returns the requested token
   """
   def get_token(client) do
-    get(client, "/token", nil)
+    get(client, "/token")
   end
 
   @doc """

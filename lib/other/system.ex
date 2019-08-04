@@ -17,7 +17,7 @@ defmodule ExPnut.Other.System do
   Returns a catalog of parameters
   """
   def sys_config(client) do
-    get(client, "/sys/config", nil)
+    get(client, "/sys/config")
   end
 
   @doc """
@@ -26,6 +26,6 @@ defmodule ExPnut.Other.System do
   Returns a list of statistics
   """
   def sys_stats(client) do
-    get(client, "/sys/stats", nil)
+    get(client, "/sys/stats")
   end
 end

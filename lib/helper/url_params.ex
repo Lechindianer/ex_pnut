@@ -4,11 +4,6 @@ defmodule ExPnut.Helper.UrlParams do
   @doc """
   Build url parameters from structs
   """
-  def build(nil), do: []
-
-  @doc """
-  Build url parameters from structs
-  """
   def build(params) do
     params
     |> Map.from_struct()
