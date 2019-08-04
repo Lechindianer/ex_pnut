@@ -9,6 +9,7 @@ defmodule ExPnut.Decode do
     cond do
       decoded_body.meta.code === 200 -> decoded_body
       decoded_body.meta.code === 201 -> decoded_body
+      decoded_body.meta.code === 204 -> decoded_body
       true -> {:error, "HTTP call failed"}
     end
   end
